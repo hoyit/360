@@ -1,0 +1,265 @@
+// Header.scss & App Layout
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 0;
+}
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: calc(100vh - 60px - 200px); // 헤더와 푸터 높이 제외
+  
+  h1 {
+    color: #333;
+    margin-bottom: 16px;
+    font-size: 32px;
+  }
+  
+  p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #e8eaed;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 60px;
+
+    @media (max-width: 768px) {
+      padding: 0 15px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+
+    .logo-text {
+      color: #4285f4;
+    }
+
+    .logo-heart {
+      margin: 0 2px;
+      font-size: 20px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    .nav-link {
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #f8f9fa;
+        color: #4285f4;
+      }
+
+      &.active {
+        background-color: #e8f0fe;
+        color: #4285f4;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  &__menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 8px;
+    gap: 3px;
+
+    @media (max-width: 768px) {
+      display: flex;
+    }
+
+    span {
+      width: 20px;
+      height: 2px;
+      background-color: #333;
+      transition: all 0.3s ease;
+    }
+
+    &:hover span {
+      background-color: #4285f4;
+    }
+
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+
+  // 모바일 메뉴
+  &__nav--mobile {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e8eaed;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: none;
+    
+    @media (max-width: 768px) {
+      &.active {
+        display: block;
+      }
+    }
+
+    .nav-link {
+      display: block;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        color: #4285f4;
+        padding-left: 8px;
+      }
+
+      &.active {
+        color: #4285f4;
+        font-weight: 600;
+        background-color: #f8f9fa;
+        padding-left: 8px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+
+// 버튼 스타일
+.btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--primary {
+    background-color: #4285f4;
+    color: white;
+    border-color: #4285f4;
+
+    &:hover {
+      background-color: #3367d6;
+      border-color: #3367d6;
+    }
+
+    &:active {
+      background-color: #2b5ce6;
+      border-color: #2b5ce6;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: #4285f4;
+    border-color: #4285f4;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    &:active {
+      background-color: #e8eaed;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
